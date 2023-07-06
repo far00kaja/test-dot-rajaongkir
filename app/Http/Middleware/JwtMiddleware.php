@@ -20,7 +20,7 @@ class JwtMiddleware extends BaseMiddleware
     public function handle($request, Closure $next)
     {
         try {
-            $user = JWTAuth::parseToken();
+            $user = JWTAuth::parseToken()->authenticate();
             // return dd(JWTAuth::parseToken());
         } catch (Exception $e) {
             if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
