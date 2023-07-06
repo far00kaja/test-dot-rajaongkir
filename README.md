@@ -1,6 +1,6 @@
 # PANDUAN INSTALASI
 
-1. `` git clone --branch feature/add_auth https://github.com/far00kaja/test-dot-rajaongkir.git ``
+1. `` git clone --branch development https://github.com/far00kaja/test-dot-rajaongkir.git ``
 2. `` cd cd pgsql-adminer``
 3. `` docker compose up -d ``
 4. `` composer install && php artisan key:generate``
