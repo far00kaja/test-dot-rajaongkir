@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ProvinceController;
 use Illuminate\Http\Request;
@@ -20,5 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/starter/province', [ProvinceController::class, 'index']);
-Route::get('/starter/city', [CityController::class, 'index']);
+Route::get('/starter/province', [ProvinceController::class, 'index'])->middleware('jwt.verify');
+Route::get('/starter/city', [CityController::class, 'index'])->middleware('jwt.verify');
+Route::group([
+    'middleware' => 'api',
+ 
+], function ($router) {
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+});
